@@ -8,7 +8,7 @@ load_dotenv()
 
 # Настройка OpenAI клиента
 client = openai.OpenAI(
-    base_url="https://openrouter.ai/api/v1/chat/completions",
+    base_url="https://openrouter.ai/api/v1/",
     api_key=os.getenv("API_KEY"))
 
 intents = discord.Intents.default()
@@ -40,7 +40,7 @@ async def ask_deepseek(question, user_name):
 async def ai(ctx, *, question):
     user_name = ctx.author.name
     answer = await ask_deepseek(question, user_name)
-    await ctx.send(f"**Вопрос от {user_name}:** {question}\n\n**Ответ:** {answer}")
+    await ctx.send(answer)
 
 # Запуск бота
 if __name__ == "__main__":
